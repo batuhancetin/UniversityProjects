@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Audience</title>
+</head>
+<body>
+  <h1>Audience Panel</h1>
+  <h2>View All Movie Sessions</h2>
+  <form action="/audience_panel" method="POST">
+    <input type="submit" name="formType" value="View All Movie Sessions">
+  </form>
+{% if sessions %}
+    <table>
+      <thead>
+        <tr>
+          <th>Movie Id</th>
+          <th>Movie Name</th>
+          <th>Director Surname</th>
+          <th>Platform Id</th>
+          <th>Theatre Id</th>
+          <th>Time Slot</th>
+          <th>Predecessor List</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        {% for session in sessions %}
+          <tr>
+            <td>{{ session[0] }}</td>
+            <td>{{ session[1] }}</td>
+            <td>{{ session[2] }}</td>
+            <td>{{ session[3] }}</td>
+            <td>{{ session[4] }}</td>
+            <td>{{ session[5] }}</td>
+            <td>{{ session[6] }}</td>
+
+
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}
+  <h2>Buy Ticket</h2>
+  <form action="/audience_panel" method="POST">
+    <input type="number" name="session-id" id="session-id-field" placeholder="Session Id" required>
+    <input type="submit" name="formType" value="Buy Ticket">
+  </form>
+
+  <h2>View Tickets</h2>
+  <form action="/audience_panel" method="POST">
+    <input type="submit" name="formType" value="View Tickets">
+  </form>
+  {% if tickets %}
+    <table>
+      <thead>
+        <tr>
+          <th>Movie Id</th>
+          <th>Movie Name</th>
+          <th>Session Id</th>
+          <th>Rating</th>
+          <th>Overall Rating</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for ticket in tickets %}
+          <tr>
+            <td>{{ ticket[0] }}</td>
+            <td>{{ ticket[1] }}</td>
+            <td>{{ ticket[2] }}</td>
+            <td>{{ ticket[3] }}</td>
+            <td>{{ ticket[4] }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}
+</body>
+</html>

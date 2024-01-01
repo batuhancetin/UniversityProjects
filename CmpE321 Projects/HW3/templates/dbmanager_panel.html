@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Database Manager</title>
+</head>
+<body>
+  <h1>Database Manager Panel</h1>
+  <h2>Add User</h2>
+  <h3>Add Audience</h3>
+  <form action="/dbmanager_panel" method="POST">
+    <input type="text" name="username" id="username-field" placeholder="Username" required><br>
+    <input type="password" name="password" id="password-field" placeholder="Password" required><br>
+    <input type="text" name="name" id="name-field" placeholder="Name" required><br>
+    <input type="text" name="surname" id="surname-field" placeholder="Surname" required><br>
+    <input type="submit" name="formType" value="Add Audience">
+  </form>
+  <h3>Add Director</h3>
+  <form action="/dbmanager_panel" method="POST">
+    <input type="text" name="username" id="username-field" placeholder="Username" required><br>
+    <input type="password" name="password" id="password-field" placeholder="Password" required><br>
+    <input type="text" name="name" id="name-field" placeholder="Name" required><br>
+    <input type="text" name="surname" id="surname-field" placeholder="Surname" required><br>
+    <input type="text" name="nationality" id="nationality-field" placeholder="Nationality" required><br>
+    <input type="number" name="platform-id" id="platform-id-field" placeholder="Platform Id"><br>
+    <input type="submit" name="formType" value="Add Director">
+  </form>
+
+  <h2>Delete Audience</h2>
+  <form action="/dbmanager_panel" method="POST">
+    <input type="text" name="username" id="username-field" placeholder="Username" required><br>
+    <input type="submit" name="formType" value="Delete Audience">
+  </form>
+
+  <h2>Update Director</h2>
+  <form action="/dbmanager_panel" method="POST">
+    <input type="text" name="username" id="username-field" placeholder="Username" required><br>
+    <input type="number" name="platform-id" id="platform-id-field" placeholder="Platform Id" required><br>
+    <input type="submit" name="formType" value="Update Director">
+  </form>
+
+  <h2>View All Directors</h2>
+  <form action="/dbmanager_panel" method="POST">
+    <input type="submit" name="formType" value="View All Directors">
+  </form>
+  {% if directors %}
+    <table>
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Name</th>
+          <th>Surname</th>
+          <th>Nationality</th>
+          <th>Platform Id</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        {% for director in directors %}
+          <tr>
+            <td>{{ director[0] }}</td>
+            <td>{{ director[1] }}</td>
+            <td>{{ director[2] }}</td>
+            <td>{{ director[3] }}</td>
+            <td>{{ director[4] }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}
+
+  <h2>View Audience Ratings</h2>
+  <form action="/dbmanager_panel" method="POST">
+    <input type="text" name="username" id="username-field" placeholder="Username" required><br>
+    <input type="submit" name="formType" value="View Audience Ratings">
+  </form>
+  {% if ratings %}
+    <h3>Ratings of Audience: {{ username }}</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Movie ID</th>
+          <th>Movie Name</th>
+          <th>Rating</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for rating in ratings %}
+          <tr>
+            <td>{{ rating[0] }}</td>
+            <td>{{ rating[1] }}</td>
+            <td>{{ rating[2] }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}
+
+  <h2>View Movies of Director</h2>
+  <form action="/dbmanager_panel" method="POST">
+    <input type="text" name="username" id="username-field" placeholder="Director Username" required><br>
+    <input type="submit" name="formType" value="View Movies of Director">
+  </form>
+  {% if sessions %}
+  <table>
+    <thead>
+      <tr>
+        <th>Movie ID</th>
+        <th>Movie Name</th>
+        <th>Theatre Id</th>
+        <th>District</th>
+        <th>Time Slot</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      {% for session in sessions %}
+        <tr>
+          <td>{{ session[0] }}</td>
+          <td>{{ session[1] }}</td>
+          <td>{{ session[2] }}</td>
+          <td>{{ session[3] }}</td>
+          <td>{{ session[4] }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+
+  <h2>View Average Movie Rating</h2>
+  <form action="/dbmanager_panel" method="POST">
+    <input type="text" name="movie-id" id="movie-id-field" placeholder="Movie ID" required><br>
+    <input type="submit" name="formType" value="View Average Movie Rating">
+  </form>
+
+  {% if average_rating %}
+  <h3>Average Rating of Movie ID: {{ average_rating[0][0] }}</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Movie ID</th>
+        <th>Movie Name</th>
+        <th>Overall Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for rating in average_rating %}
+        <tr>
+          <td>{{ rating[0] }}</td>
+          <td>{{ rating[1] }}</td>
+          <td>{{ rating[2] }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+
+</body>
+</html>

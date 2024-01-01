@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Director</title>
+</head>
+<body>
+  <h1>Director Panel</h1>
+  <h2>Add Movie Session</h2>
+  <form action="/director_panel" method="POST">
+    <input type="number" name="movie-id" id="movie-id-field" placeholder="Movie Id" required><br>
+    <input type="text" name="movie-name" id="movie-name-field" placeholder="Movie Name" required><br>
+    <input type="number" name="duration" id="duration-field" placeholder="Duration" required><br>
+    <input type="number" name="theatre-id" id="theatre-id-field" placeholder="Theatre Id" required><br>
+    <input type="date" name="date" id="date-field" placeholder="Date" required><br>
+    <input type="number" name="time-slot" id="time-slot-field" placeholder="Time Slot" required><br>
+    <input type="number" name="genre-id" id="genre-id-field" placeholder="Genre Id" required><br>
+    <input type="submit" name="formType" value="Add Session">
+  </form>
+<h2>View Available Theatres</h2>
+<form action="/director_panel" method="POST">
+  <input type="number" name="time-slot" id="time-slot-field" placeholder="Time Slot" required><br>
+  <input type="submit" name="formType" value="View Available Theatres">
+</form>
+{% if theatres %}
+    <table>
+      <thead>
+        <tr>
+          <th>Theatre Id</th>
+          <th>District</th>
+          <th>Capacity</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for theatre in theatres %}
+          <tr>
+            <td>{{ theatre[0] }}</td>
+            <td>{{ theatre[1] }}</td>
+            <td>{{ theatre[2] }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}
+
+  <h2>Add Predecessor</h2>
+  <form action="/director_panel" method="POST">
+    <input type="number" name="movie-id" id="movie-id-field" placeholder="Movie Id" required><br>
+    <input type="number" name="predecessor-id" id="predecessor-id-field" placeholder="Predecessor Id" required><br>
+    <input type="submit" name="formType" value="Add Predecessor">
+  </form>
+
+  <h2>View Movies</h2>
+  <form action="/director_panel" method="POST">
+    <input type="submit" name="formType" value="View Movies">
+  </form>
+  {% if movies %}
+    <table>
+      <thead>
+        <tr>
+          <th>Movie Id</th>
+          <th>Movie Name</th>
+          <th>Theatre Id</th>
+          <th>Time Slot</th>
+          <th>Predecessor List</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for movie in movies %}
+          <tr>
+            <td>{{ movie[0] }}</td>
+            <td>{{ movie[1] }}</td>
+            <td>{{ movie[2] }}</td>
+            <td>{{ movie[3] }}</td>
+            <td>{{ movie[4] }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}
+
+  <h2>View Audiences</h2>
+  <form action="/director_panel" method="POST">
+    <input type="number" name="movie-id" id="movie-id-field" placeholder="Movie Id" required><br>
+    <input type="submit" name="formType" value="View Audiences">
+  </form>
+  {% if audiences %}
+    <table>
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Name</th>
+          <th>Surname</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for audience in audiences %}
+          <tr>
+            <td>{{ audience[0] }}</td>
+            <td>{{ audience[1] }}</td>
+            <td>{{ audience[2] }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}
+  <h2>Update Movie Name</h2>
+  <form action="/director_panel" method="POST">
+    <input type="number" name="movie-id" id="movie-id-field" placeholder="Movie Id" required><br>
+    <input type="text" name="movie-name" id="movie-name-field" placeholder="Movie Name" required><br>
+    <input type="submit" name="formType" value="Update Movie Name">
+  </form>
+</body>
+</html>
