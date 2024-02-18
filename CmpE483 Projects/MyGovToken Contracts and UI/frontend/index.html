@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>MyGovToken Functions</title>
+      <style>
+         body {
+            font-family: "Arial", sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background-color: #38346e; /* Dark Slate Blue background color */
+            color: #ffffff;
+         }
+         h1 {
+            color: #00e6ac; /* Header text color (turquoise) */
+            font-size: 32px; /* Increased font size */
+            font-weight: bold; /* Bold font */
+            margin-bottom: 20px; /* Added margin */
+         }
+         button,
+         input {
+            margin: 5px;
+            padding: 8px;
+            font-size: 14px;
+         }
+         .function-container {
+            margin-bottom: 20px;
+            background-color: #5e5a8f;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+         }
+         hr {
+            width: 100%;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+         }
+      </style>
+   </head>
+   <body>
+      <h1>MyGovToken Functions</h1>
+
+      <hr />
+
+      <!-- Connect Button -->
+      <div class="function-container">
+         <button id="connectButton">Connect</button>
+         <p id="connectMessage"></p>
+      </div>
+
+      <hr />
+
+      <!-- Get Balance of MyGovToken -->
+      <div class="function-container">
+         <button id="getBalanceOfMyGovTokenButton">Get Balance of MyGovToken</button>
+         <p id="getBalanceOfMyGovTokenMessage"></p>
+      </div>
+
+      <hr />
+
+      <!-- Get Balance of USD Stable Coins -->
+      <div class="function-container">
+         <button id="getBalanceOfUSDStableCoinButton">Get Balance of USD Stable Coins</button>
+         <p id="getBalanceOfUSDStableCoinMessage"></p>
+      </div>
+
+      <hr />
+
+      <!-- Faucet -->
+      <div class="function-container">
+         <button id="myGovTokenFaucetButton">MyGovToken Faucet</button>
+         <p id="myGovTokenFaucetMessage"></p>
+      </div>
+
+      <hr />
+
+      <!-- Faucet -->
+      <div class="function-container">
+         <button id="usdStableCoinFaucetButton">UsdStableCoin Faucet</button>
+         <p id="usdStableCoinFaucetMessage"></p>
+      </div>
+
+      <hr />
+
+      <!-- Donate MyGovToken -->
+      <div class="function-container">
+         <label for="donateMyGovTokenAmount">Donate MyGovToken Amount:</label>
+         <input type="number" id="donateMyGovTokenAmount" placeholder="Enter amount" />
+         <button id="donateMyGovTokenButton">Donate MyGovToken</button>
+         <p id="donateMyGovTokenMessage"></p>
+      </div>
+
+      <hr />
+
+      <!-- Donate USD Stable Coins -->
+      <div class="function-container">
+         <label for="donateUSDAmount">Donate USD Amount:</label>
+         <input type="number" id="donateUSDAmount" placeholder="Enter amount" />
+         <button id="donateUSDButton">Donate USD</button>
+         <p id="donateUSDMessage"></p>
+      </div>
+
+      <hr />
+
+      <!-- Submit Survey -->
+      <div class="function-container">
+         <label for="submitSurveyIpfs">IPFS Hash:</label>
+         <input type="text" id="submitSurveyIpfs" placeholder="Enter IPFS hash" />
+         <label for="submitSurveyDeadline">Survey Deadline:</label>
+         <input type="number" id="submitSurveyDeadline" placeholder="Enter survey deadline" />
+         <label for="submitSurveyNumChoices">Number of Choices:</label>
+         <input type="number" id="submitSurveyNumChoices" placeholder="Enter number of choices" />
+         <label for="submitSurveyAtMostChoice">At Most Choice:</label>
+         <input type="number" id="submitSurveyAtMostChoice" placeholder="Enter at most choice" />
+         <button id="submitSurveyButton">Submit Survey</button>
+         <p id="submitSurveyMessage"></p>
+      </div>
+
+      <hr />
+
+      <!-- Take Survey -->
+      <div class="function-container">
+         <label for="takeSurveyId">Survey ID:</label>
+         <input type="number" id="takeSurveyId" placeholder="Enter survey ID" />
+         <label for="takeSurveyChoices">Choices (comma-separated):</label>
+         <input type="text" id="takeSurveyChoices" placeholder="Enter choices" />
+         <button id="takeSurveyButton">Take Survey</button>
+         <p id="takeSurveyMessage"></p>
+      </div>
+
+      <hr />
+
+      <!-- Get Number of Surveys -->
+      <div class="function-container">
+         <button id="getNoOfSurveysButton">Get Number of Surveys</button>
+         <p id="getNoOfSurveysMessage"></p>
+      </div>
+
+      <hr />
+
+      <!-- Get Survey Information -->
+      <div class="function-container">
+         <label for="surveyId">Survey ID:</label>
+         <input type="number" id="surveyId" placeholder="Enter survey ID" />
+         <button id="getSurveyInfoButton">Get Survey Info</button>
+         <p id="getSurveyInfoMessage"></p>
+      </div>
+
+      <hr />
+
+      <!-- Get Survey Owner -->
+      <div class="function-container">
+         <label for="surveyOwnerSurveyId">Survey ID:</label>
+         <input type="number" id="surveyOwnerSurveyId" placeholder="Enter survey ID" />
+         <button id="getSurveyOwnerButton">Get Survey Owner</button>
+         <p id="getSurveyOwnerMessage"></p>
+      </div>
+
+      <hr />
+
+      <!-- Get Survey Results -->
+      <div class="function-container">
+         <label for="surveyResultsSurveyId">Survey ID:</label>
+         <input type="number" id="surveyResultsSurveyId" placeholder="Enter survey ID" />
+         <button id="getSurveyResultsButton">Get Survey Results</button>
+         <p id="getSurveyResultsMessage"></p>
+      </div>
+
+      <hr />
+
+      <!-- Submit Project Proposal -->
+      <div class="function-container">
+         <label for="submitProjectIpfs">IPFS Hash:</label>
+         <input type="text" id="submitProjectIpfs" placeholder="Enter IPFS hash" />
+         <label for="submitProjectDeadline">Vote Deadline:</label>
+         <input type="number" id="submitProjectDeadline" placeholder="Enter vote deadline" />
+         <label for="submitProjectAmounts">Payment Amounts (comma-separated):</label>
+         <input type="text" id="submitProjectAmounts" placeholder="Enter payment amounts" />
+         <label for="submitProjectSchedule">Pay Schedule (comma-separated):</label>
+         <input type="text" id="submitProjectSchedule" placeholder="Enter pay schedule" />
+         <button id="submitProjectProposalButton">Submit Project Proposal</button>
+         <p id="submitProjectProposalMessage"></p>
+      </div>
+
+      <hr />
+
+      <!-- Reserve Project Grant -->
+      <div class="function-container">
+         <label for="reserveGrantProjectId">Project ID:</label>
+         <input type="number" id="reserveGrantProjectId" placeholder="Enter project ID" />
+         <button id="reserveProjectGrantButton">Reserve Project Grant</button>
+         <p id="reserveProjectGrantMessage"></p>
+      </div>
+
+      <hr />
+
+      <!-- Withdraw Project Payment -->
+      <div class="function-container">
+         <label for="withdrawPaymentProjectId">Project ID:</label>
+         <input type="number" id="withdrawPaymentProjectId" placeholder="Enter project ID" />
+         <button id="withdrawProjectPaymentButton">Withdraw Project Payment</button>
+         <p id="withdrawProjectPaymentMessage"></p>
+      </div>
+
+      <hr />
+
+      <!-- Delegate Vote -->
+      <div class="function-container">
+         <label for="delegateVoteMemberAddress">Member Address:</label>
+         <input type="text" id="delegateVoteMemberAddress" placeholder="Enter member address" />
+         <label for="delegateVoteProjectId">Project ID:</label>
+         <input type="number" id="delegateVoteProjectId" placeholder="Enter project ID" />
+         <button id="delegateVoteToButton">Delegate Vote</button>
+         <p id="delegateVoteToMessage"></p>
+      </div>
+
+      <hr />
+
+      <!-- Vote for Project Proposal -->
+      <div class="function-container">
+         <label for="voteForProjectId">Project ID:</label>
+         <input type="number" id="voteForProjectId" placeholder="Enter project ID" />
+         <label for="voteForProjectChoice">Choice (true/false):</label>
+         <input type="text" id="voteForProjectChoice" placeholder="Enter choice" />
+         <button id="voteForProjectProposalButton">Vote for Project Proposal</button>
+         <p id="voteForProjectProposalMessage"></p>
+      </div>
+
+      <hr />
+
+      <!-- Vote for Project Payment -->
+      <div class="function-container">
+         <label for="voteForPaymentProjectId">Project ID:</label>
+         <input type="number" id="voteForPaymentProjectId" placeholder="Enter project ID" />
+         <label for="voteForPaymentChoice">Choice (true/false):</label>
+         <input type="text" id="voteForPaymentChoice" placeholder="Enter choice" />
+         <button id="voteForProjectPaymentButton">Vote for Project Payment</button>
+         <p id="voteForProjectPaymentMessage"></p>
+      </div>
+
+      <hr />
+
+      <!-- Get Is Project Funded -->
+      <div class="function-container">
+         <label for="projectFundedId">Project ID:</label>
+         <input type="number" id="projectFundedId" placeholder="Enter project ID" />
+         <button id="getIsProjectFundedButton">Is Project Funded</button>
+         <p id="getIsProjectFundedMessage"></p>
+      </div>
+
+      <hr />
+
+      <!-- Get Project Next Payment -->
+      <div class="function-container">
+         <label for="projectNextPaymentId">Project ID:</label>
+         <input type="number" id="projectNextPaymentId" placeholder="Enter project ID" />
+         <button id="getProjectNextPaymentButton">Get Project Next Payment</button>
+         <p id="getProjectNextPaymentMessage"></p>
+      </div>
+
+      <hr />
+
+      <!-- Get Project Owner -->
+      <div class="function-container">
+         <label for="projectOwnerProjectId">Project ID:</label>
+         <input type="number" id="projectOwnerProjectId" placeholder="Enter project ID" />
+         <button id="getProjectOwnerButton">Get Project Owner</button>
+         <p id="getProjectOwnerMessage"></p>
+      </div>
+
+      <hr />
+
+      <!-- Get Project Info -->
+      <div class="function-container">
+         <label for="projectInfoId">Project ID:</label>
+         <input type="number" id="projectInfoId" placeholder="Enter project ID" />
+         <button id="getProjectInfoButton">Get Project Info</button>
+         <p id="getProjectInfoMessage"></p>
+      </div>
+
+      <hr />
+
+      <!-- Get Number of Project Proposals -->
+      <div class="function-container">
+         <button id="getNoOfProjectProposalsButton">Get Number of Project Proposals</button>
+         <p id="getNoOfProjectProposalsMessage"></p>
+      </div>
+
+      <hr />
+
+      <!-- Get Number of Funded Projects -->
+      <div class="function-container">
+         <button id="getNoOfFundedProjectsButton">Get Number of Funded Projects</button>
+         <p id="getNoOfFundedProjectsMessage"></p>
+      </div>
+
+      <hr />
+
+      <!-- Get USD Received by Project -->
+      <div class="function-container">
+         <label for="usdReceivedProjectId">Project ID:</label>
+         <input type="number" id="usdReceivedProjectId" placeholder="Enter project ID" />
+         <button id="getUSDReceivedByProjectButton">Get USD Received by Project</button>
+         <p id="getUSDReceivedByProjectMessage"></p>
+      </div>
+
+      <hr />
+
+      <!-- Transfer USD Section -->
+      <div class="function-container">
+         <label for="transferUSDReceiver">Receiver Address:</label>
+         <input type="text" id="transferUSDReceiver" placeholder="Enter receiver address" />
+         <label for="transferUSDAmount">Transfer Amount:</label>
+         <input type="number" id="transferUSDAmount" placeholder="Enter amount" />
+         <button id="transferUSDButton">Transfer USD</button>
+         <p id="transferUSDMessage"></p>
+      </div>
+
+      <script type="module" src="./index.js"></script>
+   </body>
+</html>
